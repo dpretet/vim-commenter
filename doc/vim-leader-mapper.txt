@@ -1,121 +1,43 @@
-*vim-leader-mapper.txt*      Leader key menu maker
-*leader-mapper*
+*vim-commenter.txt*                         Damn simple plugin to comment code
+*commenter*
 
 ==============================================================================
-CONTENTS                                              *leader-mapper-contents*
+CONTENTS                                                  *commenter-contents*
 
-Overview                                              |leader-mapper-overview|
+Overview                                                  |commenter-overview|
 
-Installation                                      |leader-mapper-installation|
+Installation                                          |commenter-installation|
 
-Changelog                                            |leader-mapper-changelog|
+Usage                                                        |commenter-usage|
 
-
-=================================================================================
-Overview                                                 *leader-mapper-overview*
-
-|vim-leader-mapper| is a Neovim plugin to create leader key mapping and a visual menu to display
-them. It's basically a copy of Spacemacs interactive menu, relying on leader key to toggle it
-(any key is possible).
-
-- Easy to use: the user can simply add his own commands with few setup and map them to leader key.
-- Configurable: the user can associate any command (internal or external command).
-- Fast: the plugin is very small, written in pure vimL.
-- No intrusion: no change on user mapping & configuration.
-
-It's also inspired from vim-leader-guide but it's simpler and use floating window to display
-the menu.
+Changelog                                                |commenter-changelog|
 
 
-=====================================================================================
-Installation                                             *leader-mapper-installation*
+===============================================================================
+Overview                                                   *commenter-overview*
+
+|vim-commenter| is a vim plugin to comment / uncomment code lines. It toggles
+comment on a single line or on a visual selection.
+
+===============================================================================
+Installation                                           *commenter-installation*
 
 
 Use Vim-Plug or any other plugin manager to install it:
 
-    Plug 'damofthemoon/vim-leader-mapper'
+    Plug 'damofthemoon/vim-commenter'
 
+===============================================================================
+Usage                                                         *commenter-usage*
 
-Follows a configuration example, binding regular Vim commands and FZF calls:
+Call command `Commenter` on a single line or on a visual selection.
 
-    " Define the menu content with a Vim dictionary
-    let g:leaderMenu = {'name':  "",
-                \'f': [":Files",                       "FZF file search"],
-                \'b': [":Buffers",                     "FZF buffer search"],
-                \'s': [":BLines",                      "FZF text search into current buffer"],
-                \'S': [":Lines",                       "FZF text search across loaded buffers"],
-                \'g': [":BCommits",                    "FZF git commits of the current buffer"],
-                \'G': [":Commits",                     "FZF git commits of the repository"],
-                \'v': [':vsplit',                      'Split buffer vertically'],
-                \'h': [':split',                       'Split buffer horizontally'],
-                \'d': [':bd',                          'Close buffer'],
-                \'r': [':so $MYVIMRC',                 'Reload vimrc without restarting Vim'],
-                \'l': [':ls',                          'List opened buffers'],
-                \'t': [':Tags',                        'FZF tag search'],
-                \'o': [':normal gf',                   'Open file under cursor'],
-                \}
+    :Commenter
 
+    :'<,'>Commenter
 
-Finally to bind leader key to space and toggle the menu on each space pressure:
-
-    " Define leader key to space and call vim-leader-mapper
-    nnoremap <Space> <Nop>
-    let mapleader = "\<Space>"
-    nnoremap <silent> <leader> :call leaderMapper#start() "<Space>"<CR>
-    vnoremap <silent> <leader> :call leaderMapper#start() "<Space>"<CR>
-
-
-One could want to specify the dimension and position of the window. This can be done
-with two parameters.
-
-To define the vertical placement of the window. Can be top, bottom or center (default is center):
-
-    let g:leaderMapperPos = "center"
-
-To define the window's width, in percentage of the Vim window (default is 70%):
-
-    let g:leaderMapperWidth = 70
-
-
-It's also possible to add submenu binded with a key. Here is an example:
-
-
-    " Define the menu dedicated to FZF
-    let fzfMenu = {'name':  "",
-                 \'f': [":Files",                       "FZF file search"],
-                 \'b': [":Buffers",                     "FZF buffer search"],
-                 \'s': [":BLines",                      "FZF text search into current buffer"],
-                 \'S': [":Lines",                       "FZF text search across loaded buffers"],
-                 \'g': [":BCommits",                    "FZF git commits of the current buffer"],
-                 \'G': [":Commits",                     "FZF git commits of the repository"],
-                 \}
-
-    " Define the menu content including the above menu
-    let g:leaderMenu = {'name':  "",
-                 \'f': [fzfMenu,                        "FZF menu"],
-                 \'v': [':vsplit',                      'Split buffer vertically'],
-                 \'h': [':split',                       'Split buffer horizontally'],
-                 \'d': [':bd',                          'Close buffer'],
-                 \'r': [':so $MYVIMRC',                 'Reload vimrc without restarting Vim'],
-                 \'l': [':ls',                          'List opened buffers'],
-                 \'t': [':Tags',                        'FZF tag search'],
-                 \'o': [':normal gf',                   'Open file under cursor'],
-                 \}
-
-Pressing 'f' key will open the dedicated menu to FZF.
-
-=================================================================================
-Changelog                                               *leader-mapper-changelog*
-
-v1.1.1 - 01/11/2020 - Fix issue in display if last menu list is not fully filled
-                    - Add keyword highlight in menu
-
-v1.1.0 - 01/10/2020 - Add sub-menu support
-                    - fix several small bugs
-
-v1.0.2 - 12/17/2019 - Add border to floating window
-
-v1.0.1 - 12/12/2019 - Minor syntax fix in doc
+===============================================================================
+Changelog                                                 *commenter-changelog*
 
 v1.0.0 - 12/11/2019 - Initial release
 

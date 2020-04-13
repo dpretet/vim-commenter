@@ -11,15 +11,15 @@ set cpo&vim
 
 " Comment symbol by language
 let s:comment_symbol = {
-   \   "c": '\/\/',
-   \   "cpp": '\/\/',
-   \   "javascript": '\/\/',
+   \   "c": '//',
+   \   "cpp": '//',
+   \   "javascript": '//',
    \   "lua": '--',
    \   "vhdl": '--',
    \   "python": '#',
-   \   "rust": '\/\/',
-   \   "verilog": '\/\/',
-   \   "systemverilog": '\/\/',
+   \   "rust": '//',
+   \   "verilog": '//',
+   \   "systemverilog": '//',
    \   "sh": '#',
    \   "conf": '#',
    \   "profile": '#',
@@ -39,31 +39,38 @@ function! commenter#start(...)
         return
     endif
 
-    call s:Commenter(a:1, a:2)
+    if g:leaderMapperLineStart != -1
+        let start = g:leaderMapperLineStart
+    else
+        let start = a:1
+    endif
+
+    if g:leaderMapperLineEnd != -1
+        let end = g:leaderMapperLineEnd
+    else
+        let end = a:2
+    endif
+
+    call s:comment(start, end)
     return
 
 endfunction
 
+
 " Function to toggle comment of a selection of lines
 " Only works if selected with visual mode
-function! s:Commenter(start, end)
-
-    echo a:start
-    echo a:end
+function! s:comment(start, end)
 
     " Grab comment symbol to use
-    let _comment = s:comment_symbol[&filetype]
+    let symbol = s:comment_symbol[&filetype]
 
     for lnum in range(a:start,a:end)
-
-        let line = getline(lnum)
-
-        " Uncomment
-        if match(getline(line), '^\s*'._comment) > -1
-             execute 's/\v(^\s*)'.escape(_comment, '\/').'\v\s*/\1/e'
-        " Comment
+        " If don't find comment sympbol at line start, comment
+        if match(getline(lnum), '^\s*'.symbol) == -1
+            execute lnum.'s/^\s*/&'.escape(symbol, '\/').' /e'
+        " Else uncomment the line
         else
-            execute 's/^\s*/&'.escape(_comment, '\/').' /e'
+            execute lnum.'s/\v(^\s*)'.escape(symbol, '\/').'\v\s*/\1/e'
         endif
     endfor
 
