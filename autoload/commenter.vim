@@ -24,6 +24,7 @@ let s:comment_symbol = {
    \   "conf": '#',
    \   "profile": '#',
    \   "zshrc": '#',
+   \   "zsh": '#',
    \   "bashrc": '#',
    \   "bash_profile": '#',
    \   "vim": '"',
