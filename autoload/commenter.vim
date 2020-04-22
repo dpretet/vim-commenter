@@ -30,6 +30,7 @@ let s:comment_symbol = {
    \   "vim": '"',
    \   "vimrc": '"',
    \   "tex": '%',
+   \   "makefile": '#',
    \ }
 
 " Startup function to call the plugin from user land
