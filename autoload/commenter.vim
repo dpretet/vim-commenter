@@ -20,6 +20,7 @@ let s:comment_symbol = {
    \   "rust": '//',
    \   "verilog": '//',
    \   "systemverilog": '//',
+   \   "verilog_systemverilog": '//',
    \   "sh": '#',
    \   "conf": '#',
    \   "profile": '#',
