@@ -11,7 +11,7 @@ Use [Vim-Plug](https://github.com/junegunn/vim-plug) or any other plugin
 manager to install it.
 
 ```vim
-Plug 'damofthemoon/vim-commenter'
+Plug 'dpretet/vim-commenter'
 ```
 
 ## Usage

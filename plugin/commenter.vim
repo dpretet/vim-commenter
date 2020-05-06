@@ -1,7 +1,7 @@
 "---------------------------------------------------------------
-" Plugin:      https://github.com/damofthemoon/vim-commenter
+" Plugin:      https://github.com/dpretet/vim-commenter
 " Description: A plugin to comment a bulk of code lines
-" Maintainer:  Damien Pretet https://github.com/damofthemoon
+" Maintainer:  Damien Pretet https://github.com/dpretet
 "---------------------------------------------------------------
 
 if exists('loaded_commenter_vim') || &cp
