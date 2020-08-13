@@ -17,6 +17,7 @@ let s:comment_symbol = {
    \   "lua": '--',
    \   "vhdl": '--',
    \   "python": '#',
+   \   "tcl": '#',
    \   "rust": '//',
    \   "verilog": '//',
    \   "systemverilog": '//',
