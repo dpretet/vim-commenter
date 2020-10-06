@@ -16,6 +16,7 @@ let s:comment_symbol = {
    \   "javascript": '//',
    \   "lua": '--',
    \   "vhdl": '--',
+   \   "yaml": '#',
    \   "python": '#',
    \   "tcl": '#',
    \   "rust": '//',
