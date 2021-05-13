@@ -34,6 +34,8 @@ let s:comment_symbol = {
    \   "vimrc": '"',
    \   "tex": '%',
    \   "makefile": '#',
+   \   "riscv": '#',
+   \   "asm": '#',
    \ }
 
 " Startup function to call the plugin from user land
