@@ -19,6 +19,10 @@ set cpo&vim
 " None for the moment...
 
 " Declare startup command
+" Plugin can be called 
+"   - on a single line
+"   - on a visual selection:    :'<,'>Commenter
+"   - on a line range:          :34,37Commenter
 command! -nargs=* -range Commenter call commenter#start(<line1>,<line2>)
 
 " Restore compatible mode
